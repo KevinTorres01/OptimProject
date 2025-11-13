@@ -1,0 +1,785 @@
+\documentclass[12pt,a4paper]{article}
+
+% Paquetes
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Configuración de página
+\geometry{margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage}
+\lhead{Análisis Teórico: Minimización de Función Objetivo}
+
+% Configuración de código
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    showstringspaces=false,
+    breaklines=true,
+    frame=single
+}
+
+\title{\textbf{Análisis Teórico Extendido:\\Minimización de Función Objetivo}}
+\author{Kevin Alejandro Torres Perera \\ Grupo C311}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\vspace{1cm}
+\noindent
+\textbf{Enlace del proyecto:} \url{AQUI_VA_EL_ENLACE_DEL_PROYECTO}
+\vspace{1cm}
+
+\begin{abstract}
+Este documento presenta un análisis teórico completo de un problema de optimización sin restricciones. El objetivo es minimizar la función $f(x,y) = 10(y - x^2)^2 + \frac{(x-1)^2}{2} + (y-1)^2$ en el dominio $\mathbb{R}^2$. El análisis incluye: caracterización matemática de la función, cálculo del gradiente y Hessiana, estudio de convexidad, determinación analítica del mínimo global, y descripción detallada de los algoritmos numéricos (Newton-CG y BFGS) que serán empleados para resolver el problema computacionalmente.
+
+\textbf{Resultado principal:} La función posee un único punto estacionario en $(1, 1)$ que corresponde al mínimo global único con valor $f(1,1) = 0$.
+\end{abstract}
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Definición de la Función Objetivo}
+
+La función objetivo a minimizar está definida como:
+
+\begin{equation}
+f(x,y) = 10(y - x^2)^2 + \frac{(x-1)^2}{2} + (y-1)^2
+\end{equation}
+
+\textbf{Nota importante:} Se ha verificado que el problema es de \textbf{minimización} (no maximización). Todos los términos de la función son no negativos, y el análisis confirma que existe un mínimo global en $(1,1)$ con valor 0. Si fuera necesario resolver un problema de maximización, se trabajaría con $-f(x,y)$.
+
+\subsection{Dominio}
+
+El dominio de la función es:
+\begin{equation}
+\text{Dom}(f) = \mathbb{R}^2
+\end{equation}
+
+La función está definida para todos los pares ordenados $(x, y) \in \mathbb{R}^2$, ya que todas las operaciones involucradas (potencias, sumas, productos) son válidas para cualquier número real.
+
+\subsection{Signo de la Función}
+
+Analizando cada término:
+\begin{itemize}
+    \item $10(y - x^2)^2 \geq 0$ (cuadrado multiplicado por constante positiva)
+    \item $\frac{(x-1)^2}{2} \geq 0$ (cuadrado multiplicado por constante positiva)
+    \item $(y-1)^2 \geq 0$ (cuadrado)
+\end{itemize}
+
+Por lo tanto: $f(x,y) \geq 0$ para todo $(x,y) \in \mathbb{R}^2$
+
+La función alcanza el valor $f(x,y) = 0$ si y solo si simultáneamente:
+\begin{itemize}
+    \item $y - x^2 = 0$
+    \item $x - 1 = 0$
+    \item $y - 1 = 0$
+\end{itemize}
+
+De las dos últimas ecuaciones: $x = 1$ y $y = 1$. Verificando la primera: $1 - 1^2 = 0$ \checkmark
+
+Por lo tanto, $f(x,y) = 0$ únicamente en el punto $(1, 1)$ y $f(x,y) > 0$ en cualquier otro punto.
+
+\section{Análisis de Variables}
+
+\subsection{Tipo de Variables}
+
+\begin{itemize}
+    \item \textbf{Variable $x$}: Continua, $x \in \mathbb{R}$
+    \item \textbf{Variable $y$}: Continua, $y \in \mathbb{R}$
+\end{itemize}
+
+Ambas variables son continuas y no presentan restricciones de dominio, lo que permite aplicar métodos de optimización basados en cálculo diferencial.
+
+\section{Continuidad y Diferenciabilidad}
+
+\subsection{Continuidad}
+
+La función $f(x,y)$ es una composición de funciones elementales:
+\begin{itemize}
+    \item Polinomios: $x^2$, $(x-1)^2$, $(y-1)^2$
+    \item Combinaciones lineales y cuadráticas
+\end{itemize}
+
+Cada componente es continua en $\mathbb{R}^2$, por lo tanto:
+\begin{equation}
+f \in C^0(\mathbb{R}^2)
+\end{equation}
+
+La función es \textbf{continua en todo su dominio}.
+
+\subsection{Diferenciabilidad}
+
+Como $f$ es un polinomio en las variables $x$ e $y$, todas sus derivadas parciales existen y son continuas en $\mathbb{R}^2$.
+
+Por lo tanto:
+\begin{equation}
+f \in C^\infty(\mathbb{R}^2)
+\end{equation}
+
+La función es \textbf{infinitamente diferenciable} (suave) en todo su dominio.
+
+\section{Gradiente}
+
+El gradiente de la función es el vector de derivadas parciales:
+
+\begin{equation}
+\nabla f(x,y) = \begin{bmatrix} \frac{\partial f}{\partial x} \\ \frac{\partial f}{\partial y} \end{bmatrix}
+\end{equation}
+
+\subsection{Cálculo de Derivadas Parciales}
+
+\textbf{Derivada parcial respecto a $x$:}
+
+\begin{align}
+\frac{\partial f}{\partial x} &= \frac{\partial}{\partial x}\left[10(y - x^2)^2 + \frac{(x-1)^2}{2} + (y-1)^2\right] \\
+&= 10 \cdot 2(y - x^2) \cdot (-2x) + \frac{2(x-1)}{2} + 0 \\
+&= -40x(y - x^2) + (x-1) \\
+&= -40xy + 40x^3 + x - 1
+\end{align}
+
+\textbf{Derivada parcial respecto a $y$:}
+
+\begin{align}
+\frac{\partial f}{\partial y} &= \frac{\partial}{\partial y}\left[10(y - x^2)^2 + \frac{(x-1)^2}{2} + (y-1)^2\right] \\
+&= 10 \cdot 2(y - x^2) \cdot 1 + 0 + 2(y-1) \\
+&= 20(y - x^2) + 2(y-1) \\
+&= 20y - 20x^2 + 2y - 2 \\
+&= 22y - 20x^2 - 2
+\end{align}
+
+\subsection{Vector Gradiente}
+
+\begin{equation}
+\nabla f(x,y) = \begin{bmatrix} 40x^3 - 40xy + x - 1 \\ 22y - 20x^2 - 2 \end{bmatrix}
+\end{equation}
+
+\section{Matriz Hessiana}
+
+La matriz Hessiana contiene las derivadas parciales de segundo orden:
+
+\begin{equation}
+H(x,y) = \begin{bmatrix} \frac{\partial^2 f}{\partial x^2} & \frac{\partial^2 f}{\partial x \partial y} \\ \frac{\partial^2 f}{\partial y \partial x} & \frac{\partial^2 f}{\partial y^2} \end{bmatrix}
+\end{equation}
+
+\subsection{Cálculo de Segundas Derivadas}
+
+\textbf{Segunda derivada respecto a $x$:}
+
+\begin{equation}
+\frac{\partial^2 f}{\partial x^2} = \frac{\partial}{\partial x}(40x^3 - 40xy + x - 1) = 120x^2 - 40y + 1
+\end{equation}
+
+\textbf{Derivada mixta:}
+
+\begin{equation}
+\frac{\partial^2 f}{\partial x \partial y} = \frac{\partial}{\partial y}(40x^3 - 40xy + x - 1) = -40x
+\end{equation}
+
+Por el teorema de Schwarz (las derivadas cruzadas son iguales para funciones $C^2$):
+
+\begin{equation}
+\frac{\partial^2 f}{\partial y \partial x} = -40x
+\end{equation}
+
+\textbf{Segunda derivada respecto a $y$:}
+
+\begin{equation}
+\frac{\partial^2 f}{\partial y^2} = \frac{\partial}{\partial y}(22y - 20x^2 - 2) = 22
+\end{equation}
+
+\subsection{Matriz Hessiana Final}
+
+\begin{equation}
+H(x,y) = \begin{bmatrix} 120x^2 - 40y + 1 & -40x \\ -40x & 22 \end{bmatrix}
+\end{equation}
+
+\section{Análisis de Convexidad}
+
+\subsection{Criterio de Definición Positiva}
+
+Una función es estrictamente convexa si su Hessiana es definida positiva en todo su dominio.
+
+Para que una matriz $2 \times 2$ sea definida positiva, debe cumplir:
+\begin{enumerate}
+    \item $H_{11} > 0$
+    \item $\det(H) > 0$
+\end{enumerate}
+
+\textbf{Primer criterio:}
+
+\begin{equation}
+H_{11} = 120x^2 - 40y + 1
+\end{equation}
+
+Este término puede ser negativo para ciertos valores de $(x,y)$. Por ejemplo, en $(0, 1)$:
+\begin{equation}
+H_{11}(0,1) = 0 - 40 + 1 = -39 < 0
+\end{equation}
+
+\textbf{Determinante:}
+
+\begin{align}
+\det(H) &= (120x^2 - 40y + 1)(22) - (-40x)^2 \\
+&= 2640x^2 - 880y + 22 - 1600x^2 \\
+&= 1040x^2 - 880y + 22
+\end{align}
+
+En el punto $(0, 1)$:
+\begin{equation}
+\det(H)(0,1) = 0 - 880 + 22 = -858 < 0
+\end{equation}
+
+\subsection{Conclusión sobre Convexidad}
+
+\textbf{La función NO es convexa en todo $\mathbb{R}^2$}, ya que la Hessiana no es definida positiva en todos los puntos del dominio.
+
+Sin embargo, esto no impide que la función tenga un mínimo global único. La no convexidad puede crear desafíos para algunos algoritmos de optimización, especialmente en regiones alejadas del óptimo, pero los métodos basados en Newton y quasi-Newton pueden manejar esta situación al utilizar información de curvatura local.
+
+\section{Determinación del Mínimo Teórico}
+
+\subsection{Condición Necesaria de Primer Orden: Puntos Estacionarios}
+
+Como este es un problema de optimización sin restricciones, los candidatos a óptimo son los puntos estacionarios, aquellos donde el gradiente se anula. Los puntos estacionarios satisfacen $\nabla f(x,y) = \mathbf{0}$:
+
+\begin{equation}
+\begin{cases} 
+40x^3 - 40xy + x - 1 = 0 \\ 
+22y - 20x^2 - 2 = 0 
+\end{cases}
+\end{equation}
+
+De la segunda ecuación:
+\begin{align}
+22y &= 20x^2 + 2 \\
+y &= \frac{20x^2 + 2}{22} = \frac{10x^2 + 1}{11}
+\end{align}
+
+Sustituyendo en la primera ecuación:
+
+\begin{align}
+40x^3 - 40x\left(\frac{10x^2 + 1}{11}\right) + x - 1 &= 0 \\
+40x^3 - \frac{400x^3 + 40x}{11} + x - 1 &= 0
+\end{align}
+
+Multiplicando por 11:
+
+\begin{align}
+440x^3 - 400x^3 - 40x + 11x - 11 &= 0 \\
+40x^3 - 29x - 11 &= 0
+\end{align}
+
+\subsection{Solución de la Ecuación Cúbica}
+
+Probando $x = 1$:
+
+\begin{equation}
+40(1)^3 - 29(1) - 11 = 40 - 29 - 11 = 0
+\end{equation}
+
+Por lo tanto, $x = 1$ es una raíz. Factorizando:
+
+\begin{equation}
+40x^3 - 29x - 11 = (x - 1)(40x^2 + 40x + 11)
+\end{equation}
+
+Para las otras raíces:
+\begin{equation}
+40x^2 + 40x + 11 = 0
+\end{equation}
+
+Discriminante:
+\begin{equation}
+\Delta = 40^2 - 4(40)(11) = 1600 - 1760 = -160 < 0
+\end{equation}
+
+No hay raíces reales adicionales.
+
+\subsection{Punto Estacionario Único}
+
+Con $x = 1$:
+\begin{equation}
+y = \frac{10(1)^2 + 1}{11} = \frac{11}{11} = 1
+\end{equation}
+
+\textbf{Único punto estacionario:} $(x^*, y^*) = (1, 1)$
+
+\subsection{Verificación del Tipo de Punto Estacionario}
+
+Para determinar si el punto estacionario es un mínimo, máximo o punto silla, evaluamos la Hessiana en $(1, 1)$:
+
+\begin{equation}
+H(1,1) = \begin{bmatrix} 120(1)^2 - 40(1) + 1 & -40(1) \\ -40(1) & 22 \end{bmatrix} = \begin{bmatrix} 81 & -40 \\ -40 & 22 \end{bmatrix}
+\end{equation}
+
+\textbf{Criterio de definición positiva:}
+\begin{enumerate}
+    \item $H_{11} = 81 > 0$ \checkmark
+    \item $\det(H) = 81 \cdot 22 - (-40)^2 = 1782 - 1600 = 182 > 0$ \checkmark
+\end{enumerate}
+
+La Hessiana es \textbf{definida positiva} en el punto estacionario, lo que confirma por el criterio de la segunda derivada que $(1,1)$ es un \textbf{mínimo local estricto}.
+
+\subsection{Verificación del Mínimo Global}
+
+Como $f(x,y) \geq 0$ para todo $(x,y) \in \mathbb{R}^2$ (demostrado en la sección 1.2) y $f(1,1) = 0$, se concluye:
+
+\textbf{El punto $(1, 1)$ es el mínimo global único con valor $f(1,1) = 0$.}
+
+Además, como $f(x,y) \to +\infty$ cuando $\|(x,y)\| \to \infty$ (la función crece sin límite al alejarse del origen debido a los términos cuadráticos y cúbicos), se garantiza que no existen otros mínimos locales en $\mathbb{R}^2$.
+
+\section{Análisis de Puntos Estacionarios y Óptimo}
+
+\subsection{Resumen de Puntos Estacionarios}
+
+\begin{itemize}
+    \item \textbf{Único punto estacionario:} $(1, 1)$
+    \item \textbf{Tipo:} Mínimo local estricto (y también mínimo global único)
+    \item \textbf{Valor de la función:} $f(1, 1) = 0$
+\end{itemize}
+
+\subsection{Características del Óptimo Global}
+
+\begin{enumerate}
+    \item \textbf{Unicidad:} El óptimo global es único en todo $\mathbb{R}^2$
+    \item \textbf{Globalidad:} Es mínimo global, no solo local
+    \item \textbf{Cota inferior:} $f(x,y) = 0$ es el valor mínimo absoluto alcanzable
+    \item \textbf{Comportamiento asintótico:} $\lim_{\|(x,y)\| \to \infty} f(x,y) = +\infty$
+\end{enumerate}
+
+\subsection{Análisis en el Rango de Experimentación [-100, 100]}
+
+En el dominio de experimentación $[-100, 100] \times [-100, 100]$:
+
+\begin{enumerate}
+    \item \textbf{Mínimo global:} Se encuentra en $(1, 1)$ con $f(1,1) = 0$
+    
+    \item \textbf{Valores en las esquinas del dominio:}
+    \begin{itemize}
+        \item $f(-100, -100) = 10(-100 - 10000)^2 + \frac{(-101)^2}{2} + (-101)^2 \approx 1.02 \times 10^{9}$
+        \item $f(100, 100) = 10(100 - 10000)^2 + \frac{(99)^2}{2} + (99)^2 \approx 9.80 \times 10^{8}$
+    \end{itemize}
+    
+    \item \textbf{Máximo en el dominio:} El valor máximo se alcanza aproximadamente en las esquinas, siendo del orden de $10^9$
+    
+    \item \textbf{Óptimos locales:} No existen otros óptimos locales en este rango. La función es unimodal (un solo mínimo)
+    
+    \item \textbf{Zonas complicadas para algoritmos:}
+    \begin{itemize}
+        \item \textbf{Valle parabólico:} La función tiene un valle pronunciado a lo largo de la curva $y = x^2$, donde el término dominante $10(y - x^2)^2$ es pequeño
+        \item \textbf{Regiones alejadas de $(1,1)$:} En puntos con $|x| > 10$ o $|y| > 10$, el gradiente puede ser muy grande, requiriendo pasos pequeños
+        \item \textbf{Cerca del eje $y$ negativo:} Para $x \approx 0$ y $y < 0$, la curvatura cambia significativamente
+    \end{itemize}
+    
+    \item \textbf{Condicionamiento:} El número de condición de la Hessiana varía en el dominio. En $(1,1)$ la matriz está bien condicionada, pero en regiones alejadas puede empeorar.
+\end{enumerate}
+
+\subsection{Verificación: ¿Minimización o Maximización?}
+
+Nota importante: La función original dada es para \textbf{minimización}. Verificando:
+\begin{itemize}
+    \item Todos los términos son no negativos
+    \item El valor mínimo es 0 en $(1,1)$
+    \item La función crece indefinidamente al alejarse del mínimo
+\end{itemize}
+
+Si se requiriera maximización, se trabajaría con $-f(x,y)$, pero según el enunciado del problema, se busca \textbf{minimizar} $f(x,y)$.
+
+\section{Descripción de los Algoritmos Utilizados}
+
+\subsection{Método de Newton-CG (Conjugate Gradient)}
+
+\subsubsection{Fundamento Teórico}
+
+El método de Newton-CG es una variante del método de Newton que utiliza el método del gradiente conjugado para resolver el sistema lineal asociado en cada iteración. Es especialmente eficiente para problemas de gran escala.
+
+\subsubsection{Formulación Matemática}
+
+En cada iteración $k$, el método de Newton clásico resuelve:
+
+\begin{equation}
+H(x_k) \cdot d_k = -\nabla f(x_k)
+\end{equation}
+
+donde $d_k$ es la dirección de búsqueda y $H(x_k)$ es la matriz Hessiana.
+
+El método Newton-CG resuelve este sistema de forma \textbf{iterativa} usando gradiente conjugado en lugar de invertir directamente la Hessiana, lo que reduce el costo computacional.
+
+La actualización es:
+\begin{equation}
+x_{k+1} = x_k + \alpha_k d_k
+\end{equation}
+
+donde $\alpha_k$ es el tamaño de paso determinado por búsqueda lineal.
+
+\subsubsection{Ventajas}
+
+\begin{itemize}
+    \item \textbf{Eficiencia computacional:} No requiere invertir la Hessiana explícitamente
+    \item \textbf{Convergencia cuadrática:} Similar al método de Newton cuando la Hessiana es definida positiva
+    \item \textbf{Adaptabilidad:} Funciona bien incluso cuando la Hessiana no es definida positiva
+\end{itemize}
+
+\subsubsection{Implementación con SciPy}
+
+Para este proyecto, se utiliza la función \texttt{scipy.optimize.minimize} de la librería SciPy (versión 1.5.0 o superior) con el método \texttt{'Newton-CG'}.
+
+\textbf{Documentación oficial:} \url{https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html}
+
+\textbf{Método específico:} \texttt{method='Newton-CG'}
+
+\textbf{Descripción según documentación de SciPy:}
+\begin{itemize}
+    \item Implementa el algoritmo de Newton truncado (Truncated Newton)
+    \item Utiliza el método del gradiente conjugado (CG) para resolver el sistema lineal en cada iteración
+    \item Requiere la función objetivo y su gradiente (Jacobiano)
+    \item La Hessiana puede proporcionarse explícitamente o calcularse por diferencias finitas
+\end{itemize}
+
+\textbf{Parámetros utilizados en la implementación:}
+\begin{itemize}
+    \item \texttt{jac}: Gradiente calculado analíticamente mediante \texttt{grad\_f(x)}
+    \item \texttt{options=\{'maxiter': max\_iter, 'disp': False\}}: Configuración de iteraciones máximas
+    \item \texttt{tol}: Tolerancia para el criterio de convergencia
+\end{itemize}
+
+\textbf{Referencias bibliográficas:}
+\begin{itemize}
+    \item Wright, S., \& Nocedal, J. (1999). Numerical optimization. Springer Science, 35(67-68), 7.
+    \item Nocedal, J., \& Wright, S. J. (2006). Numerical Optimization (2nd ed.). Springer.
+\end{itemize}
+
+\subsubsection{Razones para la Selección del Algoritmo}
+
+Newton-CG se selecciona para este proyecto por las siguientes razones:
+
+\begin{enumerate}
+    \item Aprovecha información de segundo orden (curvatura) de la función mediante la Hessiana
+    \item Es robusto para funciones no convexas cuando existe un mínimo bien definido
+    \item Presenta convergencia cuadrática cerca del óptimo cuando la Hessiana es definida positiva
+    \item La implementación en SciPy es estable y eficiente
+    \item Permite comparar el beneficio de usar información de segundo orden vs. métodos que solo usan primer orden
+\end{enumerate}
+
+\subsection{Método Quasi-Newton BFGS}
+
+\subsubsection{Fundamento Teórico}
+
+BFGS (Broyden-Fletcher-Goldfarb-Shanno) es un método quasi-Newton que \textbf{aproxima} la matriz Hessiana (o su inversa) mediante actualizaciones sucesivas, evitando el cálculo directo de segundas derivadas.
+
+\subsubsection{Formulación Matemática}
+
+El método mantiene una aproximación $B_k$ de la Hessiana (o $H_k$ de su inversa) que se actualiza en cada iteración mediante la fórmula de BFGS:
+
+\begin{equation}
+B_{k+1} = B_k + \frac{y_k y_k^T}{y_k^T s_k} - \frac{B_k s_k s_k^T B_k}{s_k^T B_k s_k}
+\end{equation}
+
+donde:
+\begin{itemize}
+    \item $s_k = x_{k+1} - x_k$ (cambio en posición)
+    \item $y_k = \nabla f(x_{k+1}) - \nabla f(x_k)$ (cambio en gradiente)
+\end{itemize}
+
+La dirección de búsqueda se calcula como:
+\begin{equation}
+d_k = -H_k \nabla f(x_k)
+\end{equation}
+
+\subsubsection{Propiedades}
+
+\begin{itemize}
+    \item \textbf{Convergencia superlineal:} Más rápida que métodos de primer orden, aunque no cuadrática como Newton
+    \item \textbf{Sin segundas derivadas:} Solo requiere evaluar la función y su gradiente
+    \item \textbf{Memoria moderada:} Almacena una matriz $n \times n$ (para L-BFGS existe variante con memoria limitada)
+\end{itemize}
+
+\subsubsection{Implementación con SciPy}
+
+Para este proyecto, se utiliza la función \texttt{scipy.optimize.minimize} de la librería SciPy (versión 1.5.0 o superior) con el método \texttt{'BFGS'}.
+
+\textbf{Documentación oficial:} \url{https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html}
+
+\textbf{Método específico:} \texttt{method='BFGS'}
+
+\textbf{Descripción según documentación de SciPy:}
+\begin{itemize}
+    \item Implementa el algoritmo quasi-Newton BFGS
+    \item Aproxima la matriz Hessiana inversa mediante actualizaciones de rango 2
+    \item Requiere la función objetivo y preferiblemente su gradiente
+    \item Si no se proporciona el gradiente, lo aproxima por diferencias finitas
+\end{itemize}
+
+\textbf{Parámetros utilizados en la implementación:}
+\begin{itemize}
+    \item \texttt{jac}: Gradiente calculado analíticamente mediante \texttt{grad\_f(x)}
+    \item \texttt{options=\{'maxiter': max\_iter, 'disp': False\}}: Configuración de iteraciones máximas
+    \item \texttt{tol}: Tolerancia para el criterio de convergencia
+\end{itemize}
+
+\textbf{Referencias bibliográficas:}
+\begin{itemize}
+    \item Broyden, C. G. (1970). The convergence of a class of double-rank minimization algorithms. \textit{IMA Journal of Applied Mathematics}, 6(1), 76-90.
+    \item Fletcher, R. (1970). A new approach to variable metric algorithms. \textit{The Computer Journal}, 13(3), 317-322.
+    \item Goldfarb, D. (1970). A family of variable-metric methods derived by variational means. \textit{Mathematics of Computation}, 24(109), 23-26.
+    \item Shanno, D. F. (1970). Conditioning of quasi-Newton methods for function minimization. \textit{Mathematics of Computation}, 24(111), 647-656.
+    \item Nocedal, J., \& Wright, S. J. (2006). Numerical Optimization (2nd ed.). Springer.
+\end{itemize}
+
+\subsubsection{Razones para la Selección del Algoritmo}
+
+BFGS se selecciona para este proyecto por las siguientes razones:
+
+\begin{enumerate}
+    \item Es uno de los métodos quasi-Newton más eficaces y ampliamente utilizados en la práctica
+    \item No requiere cálculo de la Hessiana, solo necesita el gradiente
+    \item Presenta un buen balance entre velocidad de convergencia y costo computacional por iteración
+    \item Es robusto para una amplia variedad de problemas de optimización no lineal
+    \item Permite comparar su rendimiento con Newton-CG para evaluar la diferencia entre usar información Hessiana exacta vs. aproximada
+\end{enumerate}
+
+\subsubsection{Posibles Problemas y Limitaciones}
+
+Según la literatura y documentación de SciPy, BFGS puede presentar dificultades en:
+
+\begin{itemize}
+    \item \textbf{Funciones mal condicionadas:} Cuando la Hessiana tiene un número de condición muy grande
+    \item \textbf{Valles estrechos:} En regiones donde la curvatura varía drásticamente en diferentes direcciones (como el valle parabólico $y = x^2$ en nuestra función)
+    \item \textbf{Puntos iniciales alejados:} Si el punto inicial está muy lejos del óptimo, puede requerir muchas iteraciones
+    \item \textbf{Hessiana singular:} En puntos donde la Hessiana no es invertible (aunque no aplica en nuestro caso en $(1,1)$)
+\end{itemize}
+
+\subsection{Librerías Externas Utilizadas}
+
+\subsubsection{SciPy - Módulo optimize}
+
+\textbf{Librería:} SciPy (Scientific Python) \\
+\textbf{Versión requerida:} $\geq$ 1.5.0 \\
+\textbf{Módulo específico:} \texttt{scipy.optimize} \\
+\textbf{Documentación oficial:} \url{https://docs.scipy.org/doc/scipy/reference/optimize.html}
+
+\textbf{Función principal utilizada:}
+\begin{lstlisting}[language=Python]
+scipy.optimize.minimize(fun, x0, method=None, jac=None, 
+                       options=None, tol=None)
+\end{lstlisting}
+
+\textbf{Descripción:} Función de optimización de uso general que proporciona una interfaz unificada para múltiples algoritmos de minimización sin restricciones y con restricciones.
+
+\textbf{Métodos específicos utilizados en este proyecto:}
+\begin{enumerate}
+    \item \texttt{method='Newton-CG'} - Newton truncado con gradiente conjugado
+    \item \texttt{method='BFGS'} - Quasi-Newton BFGS
+\end{enumerate}
+
+\subsubsection{NumPy}
+
+\textbf{Librería:} NumPy (Numerical Python) \\
+\textbf{Versión requerida:} $\geq$ 1.19.0 \\
+\textbf{Documentación oficial:} \url{https://numpy.org/doc/}
+
+\textbf{Funciones utilizadas:}
+\begin{itemize}
+    \item \texttt{np.array()}: Creación de vectores para el gradiente
+    \item \texttt{np.linalg.norm()}: Cálculo de la norma euclidiana para medir distancia al óptimo
+\end{itemize}
+
+\subsubsection{Matplotlib}
+
+\textbf{Librería:} Matplotlib \\
+\textbf{Versión requerida:} $\geq$ 3.3.0 \\
+\textbf{Documentación oficial:} \url{https://matplotlib.org/stable/index.html}
+
+\textbf{Módulos utilizados:}
+\begin{itemize}
+    \item \texttt{matplotlib.pyplot}: Generación de gráficas 2D y 3D
+    \item \texttt{mpl\_toolkits.mplot3d}: Visualizaciones tridimensionales de la superficie
+\end{itemize}
+
+\textbf{Funciones principales:}
+\begin{itemize}
+    \item \texttt{plt.figure()}, \texttt{plt.contour()}, \texttt{plt.plot()}: Gráficas de curvas de nivel y trayectorias
+    \item \texttt{ax.plot\_surface()}: Visualización 3D de la función objetivo
+\end{itemize}
+
+\subsubsection{Justificación del Uso de Librerías}
+
+Las librerías se utilizan por las siguientes razones:
+
+\begin{enumerate}
+    \item \textbf{SciPy:} Contiene implementaciones altamente optimizadas y validadas de algoritmos de optimización. La función \texttt{minimize} proporciona una interfaz consistente y criterios de convergencia robustos basados en investigación académica rigurosa.
+    
+    \item \textbf{NumPy:} Es el estándar en Python para computación numérica eficiente. Proporciona operaciones vectorizadas que mejoran el rendimiento computacional.
+    
+    \item \textbf{Matplotlib:} Es la librería estándar para visualización científica en Python, permitiendo crear gráficas de calidad profesional para análisis de resultados.
+\end{enumerate}
+
+Todas estas librerías están ampliamente validadas en la comunidad científica y son de código abierto.
+
+\section{Comparación de Resultados}
+
+\subsection{Criterios de Comparación}
+
+Los experimentos compararán ambos métodos en:
+
+\begin{enumerate}
+    \item \textbf{Número de iteraciones:} Cantidad de pasos hasta convergencia
+    \item \textbf{Número de evaluaciones de función:} Total de llamadas a $f(x,y)$
+    \item \textbf{Número de evaluaciones de gradiente:} Total de llamadas a $\nabla f(x,y)$
+    \item \textbf{Tiempo de ejecución:} Duración total del proceso
+    \item \textbf{Valor final de la función:} $f(x^*, y^*)$ alcanzado
+    \item \textbf{Distancia al óptimo teórico:} $\|(x^*, y^*) - (1, 1)\|$
+\end{enumerate}
+
+\subsection{Variables Experimentales}
+
+Se analizará el comportamiento variando:
+
+\begin{itemize}
+    \item \textbf{Puntos iniciales:} Diferentes posiciones de partida $(x_0, y_0)$
+    \item \textbf{Tolerancias:} Criterios de convergencia más o menos estrictos
+    \item \textbf{Máximo de iteraciones:} Límite computacional
+\end{itemize}
+
+\subsection{Hipótesis de Comportamiento Esperado}
+
+Basándose en la teoría de optimización numérica y las características de cada algoritmo, se esperan observar los siguientes comportamientos:
+
+\textbf{Newton-CG:}
+\begin{itemize}
+    \item Menor número de iteraciones debido a su convergencia cuadrática cerca del óptimo
+    \item Mayor costo computacional por iteración (requiere resolver un sistema lineal internamente)
+    \item Mejor precisión final en términos de distancia al óptimo teórico
+    \item Posible sensibilidad en regiones donde la Hessiana no es definida positiva
+\end{itemize}
+
+\textbf{BFGS:}
+\begin{itemize}
+    \item Mayor número de iteraciones (convergencia superlineal, no cuadrática)
+    \item Menor costo por iteración
+    \item Buena precisión final, aunque potencialmente menor que Newton-CG
+    \item Mayor robustez en regiones problemáticas debido a su naturaleza adaptativa
+\end{itemize}
+
+\subsection{Análisis del Impacto de Parámetros}
+
+\textbf{Puntos iniciales en el rango [-100, 100]:}
+\begin{itemize}
+    \item \textbf{Puntos cercanos a $(1,1)$:} Ambos métodos deberían converger rápidamente ($<$ 20 iteraciones)
+    \item \textbf{Puntos alejados ($|x| > 50$ o $|y| > 50$):} Newton-CG podría tener ventaja al explotar información de curvatura, pero también podría enfrentar problemas si la Hessiana está mal condicionada
+    \item \textbf{Puntos en el valle parabólico ($y \approx x^2$, $x \neq 1$):} Esta es una zona complicada donde el gradiente puede ser pequeño pero el punto no es óptimo. Requiere análisis cuidadoso del comportamiento de cada algoritmo
+    \item \textbf{Puntos con $x \approx 0$, $y < 0$:} Región de alta curvatura que puede ralentizar la convergencia
+\end{itemize}
+
+\textbf{Tolerancia de convergencia:}
+\begin{itemize}
+    \item \textbf{Tolerancia alta ($10^{-4}$):} Ambos métodos convergerán rápidamente pero con menor precisión
+    \item \textbf{Tolerancia baja ($10^{-10}$):} Newton-CG debería alcanzar mayor precisión final debido a su convergencia cuadrática
+\end{itemize}
+
+\textbf{Máximo de iteraciones:}
+\begin{itemize}
+    \item Este parámetro actuará como límite de seguridad para evitar ejecuciones infinitas
+    \item Se espera que ambos métodos converjan mucho antes de alcanzar el máximo en la mayoría de casos
+\end{itemize}
+
+\section{Visualización del Modelo}
+
+\subsection{Gráficas a Generar}
+
+\begin{enumerate}
+    \item \textbf{Superficie 3D:} Representación de $f(x,y)$ en el espacio
+    \item \textbf{Curvas de nivel:} Contornos de la función en el plano $(x,y)$
+    \item \textbf{Trayectorias de optimización:} Caminos seguidos por cada algoritmo desde distintos puntos iniciales
+    \item \textbf{Convergencia:} Evolución del valor de la función vs. iteraciones
+\end{enumerate}
+
+\subsection{Interpretación Geométrica}
+
+La función presenta las siguientes características geométricas:
+\begin{itemize}
+    \item \textbf{Valle parabólico:} Existe un valle pronunciado a lo largo de la curva $y = x^2$ debido al término dominante $10(y - x^2)^2$. En esta curva, el primer término es cero.
+    \item \textbf{Mínimo único:} Localizado en $(1, 1)$ donde $f(1,1) = 0$
+    \item \textbf{Crecimiento rápido:} La función crece rápidamente al alejarse del mínimo, especialmente en direcciones perpendiculares al valle
+\end{itemize}
+
+\subsection{Posibles Dificultades para los Algoritmos}
+
+Basándose en el análisis teórico y geométrico, se identifican las siguientes zonas potencialmente problemáticas:
+
+\begin{enumerate}
+    \item \textbf{Valle estrecho a lo largo de $y = x^2$:}
+    \begin{itemize}
+        \item Los algoritmos pueden tener dificultad para ``navegar'' eficientemente a lo largo del valle
+        \item Pueden requerir muchas iteraciones para moverse desde un punto en el valle hasta $(1,1)$
+        \item El condicionamiento de la Hessiana puede empeorar en esta región
+    \end{itemize}
+    
+    \item \textbf{Regiones con $|x| > 10$:}
+    \begin{itemize}
+        \item El término $40x^3$ domina el gradiente, creando gradientes muy grandes
+        \item Puede requerir tamaños de paso muy pequeños en la búsqueda lineal
+        \item Newton-CG podría enfrentar problemas si la aproximación cuadrática local no es buena
+    \end{itemize}
+    
+    \item \textbf{Puntos cercanos al eje $y$ con $x \approx 0$:}
+    \begin{itemize}
+        \item La segunda derivada $\frac{\partial^2 f}{\partial x^2} = 120x^2 - 40y + 1$ puede ser pequeña
+        \item Si $y$ es positivo y $x$ pequeño, la curvatura en dirección $x$ es débil
+    \end{itemize}
+    
+    \item \textbf{Convergencia desde puntos muy alejados (cerca de los límites [-100, 100]):}
+    \begin{itemize}
+        \item Valores de función del orden de $10^9$
+        \item Gradientes muy grandes que pueden causar problemas numéricos
+        \item Posible necesidad de estrategias de globalización más sofisticadas
+    \end{itemize}
+\end{enumerate}
+
+\section{Conclusiones del Análisis Teórico}
+
+Del análisis matemático realizado, se concluye lo siguiente:
+
+\begin{enumerate}
+    \item \textbf{Caracterización del problema:} La función objetivo $f(x,y) = 10(y - x^2)^2 + \frac{(x-1)^2}{2} + (y-1)^2$ es un problema de optimización sin restricciones con un \textbf{único punto estacionario} en $(1, 1)$ donde alcanza su \textbf{mínimo global con valor $f(1,1) = 0$}.
+    
+    \item \textbf{Propiedades de regularidad:} La función es infinitamente diferenciable ($C^\infty$) en todo $\mathbb{R}^2$, lo que garantiza la existencia de todas las derivadas necesarias para aplicar los métodos seleccionados.
+    
+    \item \textbf{No convexidad:} Aunque la función \textbf{no es convexa} en todo su dominio, esto no impide la existencia de un único mínimo global. La Hessiana es definida positiva en el óptimo, asegurando que es un mínimo local estricto que coincide con el mínimo global.
+    
+    \item \textbf{Adecuación de los algoritmos:} Tanto Newton-CG como BFGS son apropiados para este problema:
+    \begin{itemize}
+        \item \textbf{Newton-CG:} Explota la información de curvatura (Hessiana) para lograr convergencia cuadrática, ideal cerca del óptimo
+        \item \textbf{BFGS:} Aproxima la Hessiana mediante actualizaciones, ofreciendo robustez y eficiencia computacional
+    \end{itemize}
+    
+    \item \textbf{Desafíos esperados:} El valle parabólico a lo largo de $y = x^2$ y las regiones alejadas del óptimo (especialmente cerca de los límites [-100, 100]) pueden presentar dificultades para ambos algoritmos. Los experimentos cuantificarán estos efectos.
+    
+    \item \textbf{Validación experimental necesaria:} Los experimentos permitirán:
+    \begin{itemize}
+        \item Verificar las tasas de convergencia teóricas
+        \item Identificar limitaciones prácticas de cada método
+        \item Evaluar la robustez ante diferentes puntos iniciales
+        \item Medir el impacto del condicionamiento en regiones problemáticas
+    \end{itemize}
+\end{enumerate}
+
+Este análisis teórico proporciona las bases matemáticas para interpretar los resultados experimentales que se obtendrán mediante las implementaciones computacionales.
+
+\end{document}
