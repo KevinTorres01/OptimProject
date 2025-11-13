@@ -236,20 +236,10 @@ Para modificar o extender el proyecto:
 3. **Añadir métodos**: Implementar nuevas funciones `optimize_<method>`
 4. **Nuevas visualizaciones**: Extender la sección de gráficas
 
-## Autores y Reconocimientos
-
-Proyecto de investigación en optimización numérica.
 
 ### Referencias
 
 - Nocedal, J., & Wright, S. J. (2006). *Numerical Optimization* (2nd ed.). Springer.
 - SciPy Documentation: https://docs.scipy.org/doc/scipy/reference/optimize.html
 
-## Licencia
 
-Este proyecto es de uso académico y educativo.
-
----
-
-**Fecha de creación**: Noviembre 2025  
-**Versión**: 1.0
