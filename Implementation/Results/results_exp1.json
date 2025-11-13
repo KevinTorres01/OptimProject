@@ -2,40 +2,122 @@
   {
     "config": {
       "learning_rate": 0.01,
-      "tol": 1e-06,
+      "tol": 1e-07,
       "max_iter": 1000,
       "x0": [
-        0.0,
-        0.0
+        1.1,
+        1.1
       ]
     },
     "newton_cg": {
       "method": "Newton-CG",
       "x_optimal": [
-        1.000000002906994,
-        1.0000000059054819
+        0.9999999751232157,
+        0.99999994969758
       ],
-      "f_optimal": 3.918373462724145e-17,
-      "iterations": 11,
+      "f_optimal": 2.842773043110329e-15,
+      "iterations": 7,
+      "function_evaluations": 8,
+      "gradient_evaluations": 21,
+      "execution_time": 0.008284568786621094,
+      "distance_to_optimum": 5.611762517822078e-08,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    },
+    "bfgs": {
+      "method": "BFGS",
+      "x_optimal": [
+        1.0000000011569945,
+        1.00000000336638
+      ],
+      "f_optimal": 2.3077102368012232e-17,
+      "iterations": 7,
+      "function_evaluations": 10,
+      "gradient_evaluations": 10,
+      "execution_time": 0.006882429122924805,
+      "distance_to_optimum": 3.5596560235628416e-09,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    }
+  },
+  {
+    "config": {
+      "learning_rate": 0.01,
+      "tol": 1e-07,
+      "max_iter": 1000,
+      "x0": [
+        0.9,
+        0.9
+      ]
+    },
+    "newton_cg": {
+      "method": "Newton-CG",
+      "x_optimal": [
+        1.0000000072987196,
+        1.0000000144868553
+      ],
+      "f_optimal": 2.366269179308583e-16,
+      "iterations": 7,
+      "function_evaluations": 8,
+      "gradient_evaluations": 29,
+      "execution_time": 0.008404254913330078,
+      "distance_to_optimum": 1.6221599300296535e-08,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    },
+    "bfgs": {
+      "method": "BFGS",
+      "x_optimal": [
+        0.9999999999392648,
+        0.9999999998924186
+      ],
+      "f_optimal": 1.5347180535354495e-20,
+      "iterations": 6,
+      "function_evaluations": 9,
+      "gradient_evaluations": 9,
+      "execution_time": 0.006396055221557617,
+      "distance_to_optimum": 1.2354156776354351e-10,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    }
+  },
+  {
+    "config": {
+      "learning_rate": 0.01,
+      "tol": 1e-07,
+      "max_iter": 1000,
+      "x0": [
+        1.5,
+        1.2
+      ]
+    },
+    "newton_cg": {
+      "method": "Newton-CG",
+      "x_optimal": [
+        1.0000000064162349,
+        1.0000000140675505
+      ],
+      "f_optimal": 2.337342543441791e-16,
+      "iterations": 9,
+      "function_evaluations": 10,
+      "gradient_evaluations": 35,
+      "execution_time": 0.010963916778564453,
+      "distance_to_optimum": 1.546169608670722e-08,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    },
+    "bfgs": {
+      "method": "BFGS",
+      "x_optimal": [
+        1.0000000007139955,
+        1.0000000010769536
+      ],
+      "f_optimal": 2.6469966569479023e-18,
+      "iterations": 9,
       "function_evaluations": 12,
-      "gradient_evaluations": 37,
-      "execution_time": 0.006331682205200195,
-      "distance_to_optimum": 6.582197979654433e-09,
-      "success": true,
-      "message": "Optimization terminated successfully."
-    },
-    "bfgs": {
-      "method": "BFGS",
-      "x_optimal": [
-        0.9999999992577863,
-        0.9999999974014377
-      ],
-      "f_optimal": 1.9440929582203845e-17,
-      "iterations": 11,
-      "function_evaluations": 18,
-      "gradient_evaluations": 18,
-      "execution_time": 0.004519462585449219,
-      "distance_to_optimum": 2.702481640563319e-09,
+      "gradient_evaluations": 12,
+      "execution_time": 0.007256031036376953,
+      "distance_to_optimum": 1.2921372810277117e-09,
       "success": true,
       "message": "Optimization terminated successfully."
     }
@@ -43,40 +125,40 @@
   {
     "config": {
       "learning_rate": 0.01,
-      "tol": 1e-06,
+      "tol": 1e-07,
       "max_iter": 1000,
       "x0": [
-        2.0,
-        3.0
+        0.5,
+        0.8
       ]
     },
     "newton_cg": {
       "method": "Newton-CG",
       "x_optimal": [
-        1.000000034842304,
-        1.0000000530260347
+        0.999999992063589,
+        0.9999999853073142
       ],
-      "f_optimal": 6.193834401230697e-15,
-      "iterations": 10,
+      "f_optimal": 2.6129553645069064e-16,
+      "iterations": 11,
+      "function_evaluations": 13,
+      "gradient_evaluations": 39,
+      "execution_time": 0.012409687042236328,
+      "distance_to_optimum": 1.669915077158057e-08,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    },
+    "bfgs": {
+      "method": "BFGS",
+      "x_optimal": [
+        1.00000000027455,
+        1.000000000574499
+      ],
+      "f_optimal": 3.7418891251841622e-19,
+      "iterations": 9,
       "function_evaluations": 12,
-      "gradient_evaluations": 111,
-      "execution_time": 0.004204273223876953,
-      "distance_to_optimum": 6.344877064602353e-08,
-      "success": false,
-      "message": "Warning: CG iterations didn't converge. The Hessian is not positive definite."
-    },
-    "bfgs": {
-      "method": "BFGS",
-      "x_optimal": [
-        0.9999999996752258,
-        0.9999999993840472
-      ],
-      "f_optimal": 4.434236730738473e-19,
-      "iterations": 11,
-      "function_evaluations": 14,
-      "gradient_evaluations": 14,
-      "execution_time": 0.0018546581268310547,
-      "distance_to_optimum": 6.963305194072105e-10,
+      "gradient_evaluations": 12,
+      "execution_time": 0.007794857025146484,
+      "distance_to_optimum": 6.367312200514901e-10,
       "success": true,
       "message": "Optimization terminated successfully."
     }
@@ -84,40 +166,40 @@
   {
     "config": {
       "learning_rate": 0.01,
-      "tol": 1e-06,
+      "tol": 1e-07,
       "max_iter": 1000,
       "x0": [
-        -1.0,
-        2.0
+        1.0,
+        0.9
       ]
     },
     "newton_cg": {
       "method": "Newton-CG",
       "x_optimal": [
-        1.000000002973372,
-        1.0000000064832366
+        1.0000000229807806,
+        1.0000000470328352
       ],
-      "f_optimal": 4.933107090072117e-17,
-      "iterations": 36,
-      "function_evaluations": 38,
-      "gradient_evaluations": 131,
-      "execution_time": 0.007464408874511719,
-      "distance_to_optimum": 7.13255199807412e-09,
+      "f_optimal": 2.4876219934498714e-15,
+      "iterations": 5,
+      "function_evaluations": 6,
+      "gradient_evaluations": 19,
+      "execution_time": 0.0042896270751953125,
+      "distance_to_optimum": 5.2346956576180165e-08,
       "success": true,
       "message": "Optimization terminated successfully."
     },
     "bfgs": {
       "method": "BFGS",
       "x_optimal": [
-        1.0000000013948873,
-        1.0000000024580455
+        1.0000000001569307,
+        1.0000000001864917
       ],
-      "f_optimal": 8.11528509647703e-18,
-      "iterations": 21,
-      "function_evaluations": 26,
-      "gradient_evaluations": 26,
-      "execution_time": 0.0035369396209716797,
-      "distance_to_optimum": 2.826251674425435e-09,
+      "f_optimal": 2.0932310838629948e-19,
+      "iterations": 7,
+      "function_evaluations": 9,
+      "gradient_evaluations": 9,
+      "execution_time": 0.0033969879150390625,
+      "distance_to_optimum": 2.4373428140152e-10,
       "success": true,
       "message": "Optimization terminated successfully."
     }
@@ -125,122 +207,81 @@
   {
     "config": {
       "learning_rate": 0.01,
-      "tol": 1e-06,
+      "tol": 1e-07,
       "max_iter": 2000,
       "x0": [
-        10.0,
-        100.0
+        50.0,
+        50.0
       ]
     },
     "newton_cg": {
       "method": "Newton-CG",
       "x_optimal": [
-        1.0000000140696779,
-        1.0000000226945147
+        0.9999999989370166,
+        1.000000000037536
       ],
-      "f_optimal": 9.104818774359404e-16,
-      "iterations": 23,
-      "function_evaluations": 29,
-      "gradient_evaluations": 112,
-      "execution_time": 0.006158351898193359,
-      "distance_to_optimum": 2.670200054859387e-08,
+      "f_optimal": 4.737381554518757e-17,
+      "iterations": 24,
+      "function_evaluations": 31,
+      "gradient_evaluations": 73,
+      "execution_time": 0.017409801483154297,
+      "distance_to_optimum": 1.0636458950239208e-09,
       "success": true,
       "message": "Optimization terminated successfully."
     },
     "bfgs": {
       "method": "BFGS",
       "x_optimal": [
-        1.000000029249539,
-        1.0000000720330309
+        1.0000000000578526,
+        1.000000000079335
       ],
-      "f_optimal": 7.448203859373745e-15,
-      "iterations": 21,
+      "f_optimal": 2.1195445553673328e-20,
+      "iterations": 30,
+      "function_evaluations": 32,
+      "gradient_evaluations": 32,
+      "execution_time": 0.013464212417602539,
+      "distance_to_optimum": 9.818841173873862e-11,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    }
+  },
+  {
+    "config": {
+      "learning_rate": 0.01,
+      "tol": 1e-07,
+      "max_iter": 2000,
+      "x0": [
+        -50.0,
+        -50.0
+      ]
+    },
+    "newton_cg": {
+      "method": "Newton-CG",
+      "x_optimal": [
+        0.9999999926798914,
+        0.9999999854136907
+      ],
+      "f_optimal": 2.3958147405800726e-16,
+      "iterations": 20,
       "function_evaluations": 24,
-      "gradient_evaluations": 24,
-      "execution_time": 0.003057718276977539,
-      "distance_to_optimum": 7.774505173508509e-08,
-      "success": true,
-      "message": "Optimization terminated successfully."
-    }
-  },
-  {
-    "config": {
-      "learning_rate": 0.01,
-      "tol": 1e-06,
-      "max_iter": 2000,
-      "x0": [
-        -10.0,
-        100.0
-      ]
-    },
-    "newton_cg": {
-      "method": "Newton-CG",
-      "x_optimal": [
-        1.0000000263100068,
-        1.0000000352810594
-      ],
-      "f_optimal": 4.597254966449888e-15,
-      "iterations": 32,
-      "function_evaluations": 43,
-      "gradient_evaluations": 188,
-      "execution_time": 0.008968114852905273,
-      "distance_to_optimum": 4.401101694819587e-08,
-      "success": false,
-      "message": "Warning: CG iterations didn't converge. The Hessian is not positive definite."
-    },
-    "bfgs": {
-      "method": "BFGS",
-      "x_optimal": [
-        1.000000000010659,
-        1.0000000000137144
-      ],
-      "f_optimal": 8.230530489333221e-22,
-      "iterations": 37,
-      "function_evaluations": 44,
-      "gradient_evaluations": 44,
-      "execution_time": 0.005491971969604492,
-      "distance_to_optimum": 1.7369474825420654e-11,
-      "success": true,
-      "message": "Optimization terminated successfully."
-    }
-  },
-  {
-    "config": {
-      "learning_rate": 0.01,
-      "tol": 1e-06,
-      "max_iter": 2000,
-      "x0": [
-        0.0,
-        1.0
-      ]
-    },
-    "newton_cg": {
-      "method": "Newton-CG",
-      "x_optimal": [
-        0.999999999322421,
-        0.999999997856719
-      ],
-      "f_optimal": 1.1034588887814799e-17,
-      "iterations": 12,
-      "function_evaluations": 15,
-      "gradient_evaluations": 42,
-      "execution_time": 0.002460002899169922,
-      "distance_to_optimum": 2.2478360092036775e-09,
+      "gradient_evaluations": 62,
+      "execution_time": 0.01371002197265625,
+      "distance_to_optimum": 1.6320061535581387e-08,
       "success": true,
       "message": "Optimization terminated successfully."
     },
     "bfgs": {
       "method": "BFGS",
       "x_optimal": [
-        0.9999999932433606,
-        0.9999999877523124
+        1.0000000000922022,
+        1.0000000001625922
       ],
-      "f_optimal": 1.8884914801318435e-16,
-      "iterations": 13,
-      "function_evaluations": 16,
-      "gradient_evaluations": 16,
-      "execution_time": 0.001964569091796875,
-      "distance_to_optimum": 1.3987781382391652e-08,
+      "f_optimal": 3.5444615476682216e-20,
+      "iterations": 48,
+      "function_evaluations": 52,
+      "gradient_evaluations": 52,
+      "execution_time": 0.024703025817871094,
+      "distance_to_optimum": 1.8691566351502994e-10,
       "success": true,
       "message": "Optimization terminated successfully."
     }
@@ -248,40 +289,737 @@
   {
     "config": {
       "learning_rate": 0.01,
-      "tol": 1e-06,
-      "max_iter": 3000,
+      "tol": 1e-07,
+      "max_iter": 2000,
       "x0": [
-        -100.0,
+        100.0,
         -100.0
       ]
     },
     "newton_cg": {
       "method": "Newton-CG",
       "x_optimal": [
-        1.0000000168763892,
-        1.0000000281715378
+        1.000000064123838,
+        1.0000000438754528
       ],
-      "f_optimal": 1.2475442850715857e-15,
-      "iterations": 23,
-      "function_evaluations": 25,
-      "gradient_evaluations": 69,
-      "execution_time": 0.00418853759765625,
-      "distance_to_optimum": 3.2839732822764595e-08,
+      "f_optimal": 7.51677162714466e-14,
+      "iterations": 19,
+      "function_evaluations": 23,
+      "gradient_evaluations": 135,
+      "execution_time": 0.020372867584228516,
+      "distance_to_optimum": 7.769763164208262e-08,
+      "success": false,
+      "message": "Warning: CG iterations didn't converge. The Hessian is not positive definite."
+    },
+    "bfgs": {
+      "method": "BFGS",
+      "x_optimal": [
+        0.9999999991660249,
+        0.9999999991970996
+      ],
+      "f_optimal": 8.475518046184424e-18,
+      "iterations": 35,
+      "function_evaluations": 37,
+      "gradient_evaluations": 37,
+      "execution_time": 0.01563858985900879,
+      "distance_to_optimum": 1.1576543348499856e-09,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    }
+  },
+  {
+    "config": {
+      "learning_rate": 0.01,
+      "tol": 1e-07,
+      "max_iter": 2000,
+      "x0": [
+        -100.0,
+        100.0
+      ]
+    },
+    "newton_cg": {
+      "method": "Newton-CG",
+      "x_optimal": [
+        1.000000002355856,
+        1.000000005796097
+      ],
+      "f_optimal": 4.812867717913171e-17,
+      "iterations": 42,
+      "function_evaluations": 55,
+      "gradient_evaluations": 140,
+      "execution_time": 0.033445119857788086,
+      "distance_to_optimum": 6.2565802934248575e-09,
       "success": true,
       "message": "Optimization terminated successfully."
     },
     "bfgs": {
       "method": "BFGS",
       "x_optimal": [
-        0.9999999747097202,
-        0.999999932606574
+        0.999999999346001,
+        0.9999999992080147
       ],
-      "f_optimal": 7.688397987290587e-15,
-      "iterations": 49,
-      "function_evaluations": 55,
-      "gradient_evaluations": 55,
-      "execution_time": 0.0067462921142578125,
-      "distance_to_optimum": 7.198244307962436e-08,
+      "f_optimal": 3.503788796786906e-18,
+      "iterations": 50,
+      "function_evaluations": 54,
+      "gradient_evaluations": 54,
+      "execution_time": 0.021145105361938477,
+      "distance_to_optimum": 1.0271101654812086e-09,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    }
+  },
+  {
+    "config": {
+      "learning_rate": 0.01,
+      "tol": 1e-07,
+      "max_iter": 2000,
+      "x0": [
+        75.0,
+        -20.0
+      ]
+    },
+    "newton_cg": {
+      "method": "Newton-CG",
+      "x_optimal": [
+        0.9999999588189296,
+        0.999999918726026
+      ],
+      "f_optimal": 7.465240165942446e-15,
+      "iterations": 21,
+      "function_evaluations": 23,
+      "gradient_evaluations": 141,
+      "execution_time": 0.023521900177001953,
+      "distance_to_optimum": 9.111168647205128e-08,
+      "success": false,
+      "message": "Warning: CG iterations didn't converge. The Hessian is not positive definite."
+    },
+    "bfgs": {
+      "method": "BFGS",
+      "x_optimal": [
+        0.9999999998593514,
+        1.0000000001443186
+      ],
+      "f_optimal": 1.8422066537342964e-18,
+      "iterations": 33,
+      "function_evaluations": 35,
+      "gradient_evaluations": 35,
+      "execution_time": 0.01460409164428711,
+      "distance_to_optimum": 2.015189214359472e-10,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    }
+  },
+  {
+    "config": {
+      "learning_rate": 0.01,
+      "tol": 1e-07,
+      "max_iter": 1500,
+      "x0": [
+        -2.0,
+        4.0
+      ]
+    },
+    "newton_cg": {
+      "method": "Newton-CG",
+      "x_optimal": [
+        0.9999999857195925,
+        0.999999973596396
+      ],
+      "f_optimal": 8.456509088152112e-16,
+      "iterations": 18,
+      "function_evaluations": 25,
+      "gradient_evaluations": 65,
+      "execution_time": 0.014959335327148438,
+      "distance_to_optimum": 3.001800029358875e-08,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    },
+    "bfgs": {
+      "method": "BFGS",
+      "x_optimal": [
+        1.0000000034879757,
+        1.0000000066048353
+      ],
+      "f_optimal": 5.108410818543531e-17,
+      "iterations": 27,
+      "function_evaluations": 33,
+      "gradient_evaluations": 33,
+      "execution_time": 0.008249759674072266,
+      "distance_to_optimum": 7.469258619517026e-09,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    }
+  },
+  {
+    "config": {
+      "learning_rate": 0.01,
+      "tol": 1e-07,
+      "max_iter": 1500,
+      "x0": [
+        2.0,
+        4.0
+      ]
+    },
+    "newton_cg": {
+      "method": "Newton-CG",
+      "x_optimal": [
+        0.9999999565691546,
+        0.999999924007789
+      ],
+      "f_optimal": 7.899390784778317e-15,
+      "iterations": 7,
+      "function_evaluations": 8,
+      "gradient_evaluations": 104,
+      "execution_time": 0.00582575798034668,
+      "distance_to_optimum": 8.752744973395627e-08,
+      "success": false,
+      "message": "Warning: CG iterations didn't converge. The Hessian is not positive definite."
+    },
+    "bfgs": {
+      "method": "BFGS",
+      "x_optimal": [
+        0.9999999998991221,
+        0.9999999997196326
+      ],
+      "f_optimal": 1.4549199909258248e-19,
+      "iterations": 11,
+      "function_evaluations": 12,
+      "gradient_evaluations": 12,
+      "execution_time": 0.0023071765899658203,
+      "distance_to_optimum": 2.979634536076297e-10,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    }
+  },
+  {
+    "config": {
+      "learning_rate": 0.01,
+      "tol": 1e-07,
+      "max_iter": 1500,
+      "x0": [
+        5.0,
+        25.0
+      ]
+    },
+    "newton_cg": {
+      "method": "Newton-CG",
+      "x_optimal": [
+        0.9999999858734325,
+        0.9999999716130042
+      ],
+      "f_optimal": 9.05780669962959e-16,
+      "iterations": 16,
+      "function_evaluations": 19,
+      "gradient_evaluations": 58,
+      "execution_time": 0.004548072814941406,
+      "distance_to_optimum": 3.170775041628982e-08,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    },
+    "bfgs": {
+      "method": "BFGS",
+      "x_optimal": [
+        0.9999999999875132,
+        0.9999999999778637
+      ],
+      "f_optimal": 6.484773296737373e-22,
+      "iterations": 16,
+      "function_evaluations": 19,
+      "gradient_evaluations": 19,
+      "execution_time": 0.0026519298553466797,
+      "distance_to_optimum": 2.5415258564508576e-11,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    }
+  },
+  {
+    "config": {
+      "learning_rate": 0.01,
+      "tol": 1e-07,
+      "max_iter": 1500,
+      "x0": [
+        -5.0,
+        25.0
+      ]
+    },
+    "newton_cg": {
+      "method": "Newton-CG",
+      "x_optimal": [
+        1.0000000016651622,
+        1.0000000033026397
+      ],
+      "f_optimal": 1.2301476178849384e-17,
+      "iterations": 44,
+      "function_evaluations": 46,
+      "gradient_evaluations": 157,
+      "execution_time": 0.009422779083251953,
+      "distance_to_optimum": 3.6986746755202534e-09,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    },
+    "bfgs": {
+      "method": "BFGS",
+      "x_optimal": [
+        0.9999999999998653,
+        0.9999999999997672
+      ],
+      "f_optimal": 7.661199558459949e-26,
+      "iterations": 32,
+      "function_evaluations": 37,
+      "gradient_evaluations": 37,
+      "execution_time": 0.0042760372161865234,
+      "distance_to_optimum": 2.6895775474566746e-13,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    }
+  },
+  {
+    "config": {
+      "learning_rate": 0.01,
+      "tol": 1e-07,
+      "max_iter": 1500,
+      "x0": [
+        0.5,
+        0.25
+      ]
+    },
+    "newton_cg": {
+      "method": "Newton-CG",
+      "x_optimal": [
+        1.0000000021831794,
+        1.0000000048313642
+      ],
+      "f_optimal": 2.788751610739988e-17,
+      "iterations": 10,
+      "function_evaluations": 12,
+      "gradient_evaluations": 41,
+      "execution_time": 0.0020380020141601562,
+      "distance_to_optimum": 5.301731072776584e-09,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    },
+    "bfgs": {
+      "method": "BFGS",
+      "x_optimal": [
+        0.9999999999819373,
+        0.9999999999924383
+      ],
+      "f_optimal": 8.379099759867895e-21,
+      "iterations": 10,
+      "function_evaluations": 15,
+      "gradient_evaluations": 15,
+      "execution_time": 0.0014181137084960938,
+      "distance_to_optimum": 1.9581611821679708e-11,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    }
+  },
+  {
+    "config": {
+      "learning_rate": 0.01,
+      "tol": 1e-07,
+      "max_iter": 1500,
+      "x0": [
+        0.0,
+        -10.0
+      ]
+    },
+    "newton_cg": {
+      "method": "Newton-CG",
+      "x_optimal": [
+        0.9999999826166511,
+        0.9999999662074596
+      ],
+      "f_optimal": 1.302516016044471e-15,
+      "iterations": 11,
+      "function_evaluations": 14,
+      "gradient_evaluations": 40,
+      "execution_time": 0.002044200897216797,
+      "distance_to_optimum": 3.8001534269996485e-08,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    },
+    "bfgs": {
+      "method": "BFGS",
+      "x_optimal": [
+        0.9999999994084441,
+        0.9999999990111914
+      ],
+      "f_optimal": 1.5302491206546058e-18,
+      "iterations": 19,
+      "function_evaluations": 33,
+      "gradient_evaluations": 33,
+      "execution_time": 0.0031516551971435547,
+      "distance_to_optimum": 1.152250332945341e-09,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    }
+  },
+  {
+    "config": {
+      "learning_rate": 0.01,
+      "tol": 1e-07,
+      "max_iter": 1500,
+      "x0": [
+        10.0,
+        -5.0
+      ]
+    },
+    "newton_cg": {
+      "method": "Newton-CG",
+      "x_optimal": [
+        1.0000000123925576,
+        1.000000027518214
+      ],
+      "f_optimal": 9.087381098181985e-16,
+      "iterations": 14,
+      "function_evaluations": 17,
+      "gradient_evaluations": 126,
+      "execution_time": 0.0037560462951660156,
+      "distance_to_optimum": 3.0179920193931135e-08,
+      "success": false,
+      "message": "Warning: CG iterations didn't converge. The Hessian is not positive definite."
+    },
+    "bfgs": {
+      "method": "BFGS",
+      "x_optimal": [
+        0.9999999999859348,
+        0.9999999999569115
+      ],
+      "f_optimal": 4.1929977549333465e-21,
+      "iterations": 24,
+      "function_evaluations": 25,
+      "gradient_evaluations": 25,
+      "execution_time": 0.002247333526611328,
+      "distance_to_optimum": 4.5326055649612204e-11,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    }
+  },
+  {
+    "config": {
+      "learning_rate": 0.01,
+      "tol": 1e-07,
+      "max_iter": 1500,
+      "x0": [
+        -10.0,
+        5.0
+      ]
+    },
+    "newton_cg": {
+      "method": "Newton-CG",
+      "x_optimal": [
+        1.0000000101226403,
+        1.0000000198526469
+      ],
+      "f_optimal": 4.469031227236589e-16,
+      "iterations": 45,
+      "function_evaluations": 47,
+      "gradient_evaluations": 155,
+      "execution_time": 0.005765199661254883,
+      "distance_to_optimum": 2.22844213209276e-08,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    },
+    "bfgs": {
+      "method": "BFGS",
+      "x_optimal": [
+        1.0000000036833607,
+        1.0000000055136975
+      ],
+      "f_optimal": 7.152141106394111e-17,
+      "iterations": 37,
+      "function_evaluations": 40,
+      "gradient_evaluations": 40,
+      "execution_time": 0.0036156177520751953,
+      "distance_to_optimum": 6.6308375304258415e-09,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    }
+  },
+  {
+    "config": {
+      "learning_rate": 0.01,
+      "tol": 1e-07,
+      "max_iter": 1500,
+      "x0": [
+        20.0,
+        10.0
+      ]
+    },
+    "newton_cg": {
+      "method": "Newton-CG",
+      "x_optimal": [
+        0.9999999950014419,
+        0.9999999542499347
+      ],
+      "f_optimal": 1.488829492055768e-14,
+      "iterations": 18,
+      "function_evaluations": 21,
+      "gradient_evaluations": 57,
+      "execution_time": 0.002300262451171875,
+      "distance_to_optimum": 4.6022321296367134e-08,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    },
+    "bfgs": {
+      "method": "BFGS",
+      "x_optimal": [
+        0.9999999764497489,
+        0.9999999542198585
+      ],
+      "f_optimal": 2.390562024089853e-15,
+      "iterations": 26,
+      "function_evaluations": 27,
+      "gradient_evaluations": 27,
+      "execution_time": 0.0022945404052734375,
+      "distance_to_optimum": 5.148238220730575e-08,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    }
+  },
+  {
+    "config": {
+      "learning_rate": 0.01,
+      "tol": 1e-07,
+      "max_iter": 1500,
+      "x0": [
+        -20.0,
+        -10.0
+      ]
+    },
+    "newton_cg": {
+      "method": "Newton-CG",
+      "x_optimal": [
+        1.0000000048017563,
+        1.0000000096173018
+      ],
+      "f_optimal": 1.0402282807933008e-16,
+      "iterations": 42,
+      "function_evaluations": 44,
+      "gradient_evaluations": 148,
+      "execution_time": 0.004748106002807617,
+      "distance_to_optimum": 1.0749388753216488e-08,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    },
+    "bfgs": {
+      "method": "BFGS",
+      "x_optimal": [
+        1.0000000006828575,
+        1.0000000012861694
+      ],
+      "f_optimal": 1.95065411288338e-18,
+      "iterations": 42,
+      "function_evaluations": 45,
+      "gradient_evaluations": 45,
+      "execution_time": 0.003392934799194336,
+      "distance_to_optimum": 1.4562026436184211e-09,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    }
+  },
+  {
+    "config": {
+      "learning_rate": 0.01,
+      "tol": 1e-07,
+      "max_iter": 1500,
+      "x0": [
+        10.0,
+        0.0
+      ]
+    },
+    "newton_cg": {
+      "method": "Newton-CG",
+      "x_optimal": [
+        0.9999999981873925,
+        0.9999999990062859
+      ],
+      "f_optimal": 7.187821091084011e-17,
+      "iterations": 12,
+      "function_evaluations": 13,
+      "gradient_evaluations": 34,
+      "execution_time": 0.0013554096221923828,
+      "distance_to_optimum": 2.067126922660222e-09,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    },
+    "bfgs": {
+      "method": "BFGS",
+      "x_optimal": [
+        0.9999999997878256,
+        0.9999999996436232
+      ],
+      "f_optimal": 1.9571529672175574e-19,
+      "iterations": 23,
+      "function_evaluations": 24,
+      "gradient_evaluations": 24,
+      "execution_time": 0.002112865447998047,
+      "distance_to_optimum": 4.1475584031530274e-10,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    }
+  },
+  {
+    "config": {
+      "learning_rate": 0.01,
+      "tol": 1e-07,
+      "max_iter": 1500,
+      "x0": [
+        -10.0,
+        0.0
+      ]
+    },
+    "newton_cg": {
+      "method": "Newton-CG",
+      "x_optimal": [
+        0.9999999917592037,
+        0.9999999869493701
+      ],
+      "f_optimal": 3.2198934034324364e-16,
+      "iterations": 26,
+      "function_evaluations": 32,
+      "gradient_evaluations": 83,
+      "execution_time": 0.0031516551971435547,
+      "distance_to_optimum": 1.5434690284357652e-08,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    },
+    "bfgs": {
+      "method": "BFGS",
+      "x_optimal": [
+        0.9999999996529886,
+        0.9999999994609481
+      ],
+      "f_optimal": 5.9094530478312535e-19,
+      "iterations": 40,
+      "function_evaluations": 45,
+      "gradient_evaluations": 45,
+      "execution_time": 0.003447294235229492,
+      "distance_to_optimum": 6.410880528858542e-10,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    }
+  },
+  {
+    "config": {
+      "learning_rate": 0.01,
+      "tol": 1e-07,
+      "max_iter": 1500,
+      "x0": [
+        0.0,
+        10.0
+      ]
+    },
+    "newton_cg": {
+      "method": "Newton-CG",
+      "x_optimal": [
+        1.0000000113891871,
+        1.0000000245136722
+      ],
+      "f_optimal": 6.95889497342243e-16,
+      "iterations": 11,
+      "function_evaluations": 14,
+      "gradient_evaluations": 40,
+      "execution_time": 0.001420736312866211,
+      "distance_to_optimum": 2.703023693572531e-08,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    },
+    "bfgs": {
+      "method": "BFGS",
+      "x_optimal": [
+        0.9999999999444175,
+        1.0000000000833533
+      ],
+      "f_optimal": 3.8686657073814424e-19,
+      "iterations": 21,
+      "function_evaluations": 26,
+      "gradient_evaluations": 26,
+      "execution_time": 0.001893758773803711,
+      "distance_to_optimum": 1.0018580366701512e-10,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    }
+  },
+  {
+    "config": {
+      "learning_rate": 0.01,
+      "tol": 1e-07,
+      "max_iter": 1500,
+      "x0": [
+        0.0,
+        -20.0
+      ]
+    },
+    "newton_cg": {
+      "method": "Newton-CG",
+      "x_optimal": [
+        1.0000000023118818,
+        1.0000000046603734
+      ],
+      "f_optimal": 2.4404881934276064e-17,
+      "iterations": 11,
+      "function_evaluations": 14,
+      "gradient_evaluations": 37,
+      "execution_time": 0.0013587474822998047,
+      "distance_to_optimum": 5.20229544166632e-09,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    },
+    "bfgs": {
+      "method": "BFGS",
+      "x_optimal": [
+        0.9999999987875423,
+        0.9999999971228561
+      ],
+      "f_optimal": 1.1058089548831688e-17,
+      "iterations": 20,
+      "function_evaluations": 37,
+      "gradient_evaluations": 37,
+      "execution_time": 0.0024466514587402344,
+      "distance_to_optimum": 3.122180395256964e-09,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    }
+  },
+  {
+    "config": {
+      "learning_rate": 0.01,
+      "tol": 1e-07,
+      "max_iter": 2000,
+      "x0": [
+        1.0,
+        100.0
+      ]
+    },
+    "newton_cg": {
+      "method": "Newton-CG",
+      "x_optimal": [
+        1.0000000077242064,
+        1.0000000189292022
+      ],
+      "f_optimal": 5.093053291586406e-16,
+      "iterations": 28,
+      "function_evaluations": 38,
+      "gradient_evaluations": 118,
+      "execution_time": 0.004616498947143555,
+      "distance_to_optimum": 2.0444511743541292e-08,
+      "success": true,
+      "message": "Optimization terminated successfully."
+    },
+    "bfgs": {
+      "method": "BFGS",
+      "x_optimal": [
+        0.9999999992680061,
+        0.9999999986664699
+      ],
+      "f_optimal": 2.2164022343305454e-18,
+      "iterations": 22,
+      "function_evaluations": 32,
+      "gradient_evaluations": 32,
+      "execution_time": 0.0025148391723632812,
+      "distance_to_optimum": 1.5212223756476441e-09,
       "success": true,
       "message": "Optimization terminated successfully."
     }

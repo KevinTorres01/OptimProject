@@ -19,7 +19,7 @@
       "iterations": 10,
       "function_evaluations": 11,
       "gradient_evaluations": 110,
-      "execution_time": 0.004122018814086914,
+      "execution_time": 0.0026640892028808594,
       "distance_to_optimum": 4.289590447190593e-07,
       "success": false,
       "message": "Warning: CG iterations didn't converge. The Hessian is not positive definite."
@@ -34,7 +34,7 @@
       "iterations": 11,
       "function_evaluations": 14,
       "gradient_evaluations": 14,
-      "execution_time": 0.0017774105072021484,
+      "execution_time": 0.0012428760528564453,
       "distance_to_optimum": 3.5050199991346195e-11,
       "success": true,
       "message": "Optimization terminated successfully."
@@ -60,7 +60,7 @@
       "iterations": 12,
       "function_evaluations": 13,
       "gradient_evaluations": 37,
-      "execution_time": 0.002334117889404297,
+      "execution_time": 0.001453399658203125,
       "distance_to_optimum": 3.149714416621275e-08,
       "success": true,
       "message": "Optimization terminated successfully."
@@ -75,7 +75,7 @@
       "iterations": 14,
       "function_evaluations": 16,
       "gradient_evaluations": 16,
-      "execution_time": 0.002046823501586914,
+      "execution_time": 0.0012187957763671875,
       "distance_to_optimum": 2.720592769008171e-06,
       "success": true,
       "message": "Optimization terminated successfully."
@@ -101,7 +101,7 @@
       "iterations": 17,
       "function_evaluations": 19,
       "gradient_evaluations": 62,
-      "execution_time": 0.003504514694213867,
+      "execution_time": 0.0021257400512695312,
       "distance_to_optimum": 1.5576898078817871e-09,
       "success": true,
       "message": "Optimization terminated successfully."
@@ -116,7 +116,7 @@
       "iterations": 14,
       "function_evaluations": 18,
       "gradient_evaluations": 18,
-      "execution_time": 0.002202749252319336,
+      "execution_time": 0.0013325214385986328,
       "distance_to_optimum": 1.2181445951738968e-12,
       "success": true,
       "message": "Optimization terminated successfully."
@@ -142,7 +142,7 @@
       "iterations": 8,
       "function_evaluations": 9,
       "gradient_evaluations": 27,
-      "execution_time": 0.0015764236450195312,
+      "execution_time": 0.0009810924530029297,
       "distance_to_optimum": 1.5063373595283615e-08,
       "success": true,
       "message": "Optimization terminated successfully."
@@ -157,7 +157,7 @@
       "iterations": 10,
       "function_evaluations": 12,
       "gradient_evaluations": 12,
-      "execution_time": 0.0014476776123046875,
+      "execution_time": 0.0009114742279052734,
       "distance_to_optimum": 7.610995230492913e-09,
       "success": true,
       "message": "Optimization terminated successfully."
@@ -183,7 +183,7 @@
       "iterations": 35,
       "function_evaluations": 43,
       "gradient_evaluations": 118,
-      "execution_time": 0.006997346878051758,
+      "execution_time": 0.004585742950439453,
       "distance_to_optimum": 4.500273987034809e-09,
       "success": true,
       "message": "Optimization terminated successfully."
@@ -198,7 +198,7 @@
       "iterations": 34,
       "function_evaluations": 37,
       "gradient_evaluations": 37,
-      "execution_time": 0.004703998565673828,
+      "execution_time": 0.0030517578125,
       "distance_to_optimum": 1.535680575163902e-09,
       "success": true,
       "message": "Optimization terminated successfully."
@@ -224,7 +224,7 @@
       "iterations": 42,
       "function_evaluations": 55,
       "gradient_evaluations": 140,
-      "execution_time": 0.008745431900024414,
+      "execution_time": 0.005691051483154297,
       "distance_to_optimum": 6.2565802934248575e-09,
       "success": true,
       "message": "Optimization terminated successfully."
@@ -239,7 +239,7 @@
       "iterations": 50,
       "function_evaluations": 54,
       "gradient_evaluations": 54,
-      "execution_time": 0.0068433284759521484,
+      "execution_time": 0.0046541690826416016,
       "distance_to_optimum": 1.0271101654812086e-09,
       "success": true,
       "message": "Optimization terminated successfully."
@@ -265,7 +265,7 @@
       "iterations": 23,
       "function_evaluations": 29,
       "gradient_evaluations": 191,
-      "execution_time": 0.006756305694580078,
+      "execution_time": 0.006264925003051758,
       "distance_to_optimum": 2.670200054859387e-08,
       "success": false,
       "message": "Warning: CG iterations didn't converge. The Hessian is not positive definite."
@@ -280,7 +280,7 @@
       "iterations": 22,
       "function_evaluations": 25,
       "gradient_evaluations": 25,
-      "execution_time": 0.0029413700103759766,
+      "execution_time": 0.0027625560760498047,
       "distance_to_optimum": 7.300295862741727e-11,
       "success": true,
       "message": "Optimization terminated successfully."
@@ -306,7 +306,7 @@
       "iterations": 11,
       "function_evaluations": 14,
       "gradient_evaluations": 40,
-      "execution_time": 0.0022974014282226562,
+      "execution_time": 0.002447366714477539,
       "distance_to_optimum": 1.067758293245432e-08,
       "success": true,
       "message": "Optimization terminated successfully."
@@ -321,7 +321,7 @@
       "iterations": 19,
       "function_evaluations": 36,
       "gradient_evaluations": 36,
-      "execution_time": 0.003780841827392578,
+      "execution_time": 0.0032482147216796875,
       "distance_to_optimum": 4.783287357734824e-09,
       "success": true,
       "message": "Optimization terminated successfully."
@@ -347,7 +347,7 @@
       "iterations": 24,
       "function_evaluations": 31,
       "gradient_evaluations": 73,
-      "execution_time": 0.0046460628509521484,
+      "execution_time": 0.004051923751831055,
       "distance_to_optimum": 1.0636458950239208e-09,
       "success": true,
       "message": "Optimization terminated successfully."
@@ -362,7 +362,7 @@
       "iterations": 30,
       "function_evaluations": 32,
       "gradient_evaluations": 32,
-      "execution_time": 0.003942728042602539,
+      "execution_time": 0.0036191940307617188,
       "distance_to_optimum": 9.818841173873862e-11,
       "success": true,
       "message": "Optimization terminated successfully."
