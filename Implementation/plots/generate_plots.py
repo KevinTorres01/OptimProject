@@ -38,7 +38,12 @@ def plot_combined_results(exp1_data, exp2_data):
         rects1 = plt.bar(x - width/2, newton_cg_data[metric], width, label='Newton-CG')
         rects2 = plt.bar(x + width/2, bfgs_data[metric], width, label='BFGS')
         
-        plt.ylabel(metric.replace('_', ' ').title())
+        if metric == 'distance_to_optimum':
+            plt.yscale('log', base=10)
+            plt.ylabel(f"{metric.replace('_', ' ').title()} (Escala Log Base 10)")
+        else:
+            plt.ylabel(metric.replace('_', ' ').title())
+        
         plt.title(f'Comparacion de {metric.replace("_", " ").title()} (Experimentos 1 y 2)')
         plt.xticks(x, config_labels, rotation=45, ha="right")
         plt.legend()
