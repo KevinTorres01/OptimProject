@@ -29,19 +29,17 @@ Este informe presenta un análisis teórico y experimental del problema de minim
 
 El problema consiste en la minimización sin restricciones de una función definida en $\mathbb{R}^2$. A continuación, se analiza la existencia de solución y la convexidad del modelo.
 
-\subsection{Existencia de Solución}
+
 La función objetivo es continua en todo su dominio. Además, es una función coercitiva, lo que significa que $f(x,y) \to \infty$ cuando la norma del vector $(x,y)$ tiende a infinito. Esto se debe a los términos cuadráticos dominantes. Según el Teorema de Weierstrass, toda función continua y coercitiva sobre $\mathbb{R}^n$ alcanza un mínimo global. Por lo tanto, la existencia de al menos una solución para el problema de minimización está garantizada.
 
-\subsection{Convexidad}
+
 Como se detallará en el análisis de la matriz Hessiana, la función no es convexa globalmente. La falta de convexidad implica que los algoritmos de optimización podrían, en teoría, converger a mínimos locales en lugar del mínimo global. Sin embargo, para este problema particular, se demostrará que existe un único punto estacionario que corresponde al mínimo global, simplificando el desafío que la no convexidad podría presentar.
 
-\section{Caracterización de la Función Objetivo}
 
 La función objetivo a minimizar está definida en el dominio $\mathbb{R}^2$, ya que las operaciones que la componen —polinomios, sumas y productos— son válidas para cualquier par de números reales. Un análisis de sus términos revela que la función es no negativa en todo su dominio, dado que cada componente es un término cuadrático multiplicado por una constante positiva. La función alcanza su valor mínimo de cero si y solo si todos sus términos son simultáneamente nulos, lo cual ocurre únicamente en el punto $(1, 1)$. En cualquier otro punto, la función es estrictamente positiva.
 
 La función es una composición de polinomios y combinaciones lineales, por lo que es continua en todo su dominio. Además, al ser un polinomio en las variables $x$ e $y$, todas sus derivadas parciales de cualquier orden existen y son continuas. Esto implica que la función es infinitamente diferenciable, o suave ($C^\infty$), lo que garantiza las condiciones de regularidad necesarias para aplicar métodos de optimización basados en el cálculo diferencial.
 
-\section{Gradiente y Matriz Hessiana}
 
 El gradiente de la función, $\nabla f(x,y)$, que indica la dirección de máximo crecimiento, se obtiene calculando las derivadas parciales con respecto a $x$ e $y$. El resultado es el siguiente vector:
 
@@ -57,7 +55,6 @@ H(x,y) = \begin{bmatrix} 120x^2 - 40y + 1 & -40x \\ -40x & 22 \end{bmatrix}
 
 El análisis de la Hessiana es crucial para entender la convexidad de la función. Una función es estrictamente convexa si su matriz Hessiana es definida positiva en todo su dominio. Sin embargo, en este caso, se puede demostrar que la función no es convexa globalmente. Por ejemplo, en el punto $(0, 1)$, el primer elemento de la diagonal de la Hessiana es negativo ($H_{11} = -39$) y su determinante también es negativo, lo que confirma que la matriz no es definida positiva. Esta no convexidad puede presentar desafíos para los algoritmos de optimización, aunque no impide la existencia de un mínimo global único.
 
-\section{Determinación del Mínimo Teórico}
 
 Para encontrar los candidatos a óptimos en un problema sin restricciones, se buscan los puntos estacionarios, es decir, aquellos donde el gradiente se anula. Al resolver el sistema de ecuaciones $\nabla f(x,y) = \mathbf{0}$, se encuentra que la función posee un único punto estacionario en $(1, 1)$.
 
@@ -85,7 +82,7 @@ El algoritmo genera una secuencia de direcciones de búsqueda conjugadas, garant
 
 El método BFGS (Broyden-Fletcher-Goldfarb-Shanno) es uno de los algoritmos quasi-Newton más populares y efectivos. Su principal característica es que elude por completo el cálculo explícito de la matriz Hessiana. En su lugar, construye y actualiza iterativamente una aproximación de la Hessiana inversa ($B_k^{-1}$), utilizando únicamente información de primer orden: los gradientes.
 
-El algoritmo comienza con una aproximación inicial de la Hessiana inversa (generalmente la matriz identidad) y la refina en cada paso. La actualización se realiza mediante una fórmula de bajo rango (rank-two update) que satisface la "ecuación secante", asegurando que la nueva aproximación modele correctamente el comportamiento de la función a lo largo de la última iteración. La dirección de búsqueda se calcula de manera muy eficiente mediante un simple producto matriz-vector: $p_k = -B_k^{-1} \nabla f_k$.
+El algoritmo comienza con una aproximación inicial de la Hessiana inversa (generalmente la matriz identidad) y la refina en cada paso. La actualización se realiza mediante una fórmula de bajo rango que satisface la "ecuación secante", asegurando que la nueva aproximación modele correctamente el comportamiento de la función a lo largo de la última iteración. La dirección de búsqueda se calcula de manera muy eficiente mediante un simple producto matriz-vector: $p_k = -B_k^{-1} \nabla f_k$.
 
 Las principales ventajas del método BFGS son su bajo costo computacional, ya que al evitar el cálculo de segundas derivadas, cada iteración es significativamente más ligera que en el método de Newton. Además, destaca por su robustez, pues la fórmula de actualización está diseñada para mantener la aproximación de la Hessiana definida positiva, lo que hace al método más estable y robusto, especialmente en regiones no convexas. Finalmente, presenta una buena convergencia, con una tasa superlineal que, aunque teóricamente más lenta que la de Newton, es muy rápida en la práctica y a menudo supera a Newton-CG en tiempo total de ejecución.
 
@@ -97,36 +94,35 @@ Ambos algoritmos fueron implementados en este proyecto utilizando la función \t
 
 Para evaluar el rendimiento práctico de ambos algoritmos, se ejecutó un conjunto de 34 experimentos combinando diferentes puntos iniciales y tolerancias. El análisis se centra en tres métricas clave: la eficiencia (tiempo de ejecución), la precisión (distancia a la solución óptima) y la velocidad de convergencia (número de iteraciones).
 
-\subsection{Eficiencia Computacional}
 La eficiencia, medida como el tiempo total de ejecución, es una de las comparativas más directas del rendimiento. Como se observa en la Figura \ref{fig:exec_time}, el método BFGS es consistentemente más rápido que Newton-CG en la gran mayoría de las configuraciones.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1\textwidth]{Implementation/plots/combined_plots/combined_execution_time_comparison.png}
+    \includegraphics[width=1\textwidth]{combined_execution_time_comparison.png}
     \caption{Comparación del tiempo de ejecución (en segundos) entre Newton-CG y BFGS para todas las configuraciones experimentales. Un valor menor indica mayor eficiencia.}
     \label{fig:exec_time}
 \end{figure}
 
 Aunque la teoría sugiere que los métodos de Newton pueden converger en menos pasos, su coste por iteración es significativamente mayor debido al cálculo y manejo de la matriz Hessiana. En contraste, BFGS, al aproximar esta información, mantiene un coste computacional por iteración mucho más bajo, lo que le otorga una ventaja decisiva en velocidad para este problema.
 
-\subsection{Precisión y Calidad de la Solución}
+
 La precisión se evaluó midiendo la distancia euclidiana entre la solución encontrada por el algoritmo y el mínimo teórico conocido $(1, 1)$. La Figura \ref{fig:distance} muestra que ambos métodos son capaces de encontrar soluciones de muy alta precisión, con distancias al óptimo del orden de $10^{-6}$ o inferiores.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1\textwidth]{Implementation/plots/combined_plots/combined_distance_to_optimum_comparison.png}
+    \includegraphics[width=1\textwidth]{combined_distance_to_optimum_comparison.png}
     \caption{Comparación de la distancia a la solución óptima. La escala logarítmica en el eje Y resalta las pequeñas diferencias en precisión. Un valor menor es mejor.}
     \label{fig:distance}
 \end{figure}
 
-Si bien no hay un ganador absoluto en términos de precisión, lo más destacable es la robustez del método BFGS. A lo largo de todos los experimentos, BFGS convergió exitosamente. En cambio, Newton-CG falló en varias configuraciones (indicado por barras de altura cero en algunas gráficas o valores anómalos), especialmente con puntos iniciales alejados del óptimo. Los registros de los experimentos (\texttt{results\_exp1.json} y \texttt{results\_exp2.json}) confirman esto con advertencias como \texttt{Warning: CG iterations didn't converge. The Hessian is not positive definite}. Esto sucede porque la no convexidad de la función en ciertas regiones del dominio impide que el subproblema del gradiente conjugado se resuelva adecuadamente.
+Si bien no hay un ganador absoluto en términos de precisión, lo más destacable es la robustez del método BFGS. A lo largo de todos los experimentos, BFGS convergió exitosamente. En cambio, Newton-CG falló en varias configuraciones (indicado por barras de altura cero en algunas gráficas o valores anómalos), especialmente con puntos iniciales alejados del óptimo. Los registros de los experimentos (results\_exp1.json y results\_exp2.json) confirman esto con advertencias como 'Warning: CG iterations didn't converge. The Hessian is not positive definite'. Esto sucede porque la no convexidad de la función en ciertas regiones del dominio impide que el subproblema del gradiente conjugado se resuelva adecuadamente.
 
-\subsection{Velocidad de Convergencia}
+
 El número de iteraciones, mostrado en la Figura \ref{fig:iterations}, ofrece una visión más profunda del comportamiento de convergencia. Contrario a lo que se podría esperar, Newton-CG no siempre converge en menos iteraciones que BFGS. En muchos casos, ambos métodos requieren un número similar de pasos.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1\textwidth]{Implementation/plots/combined_plots/combined_iterations_comparison.png}
+    \includegraphics[width=1\textwidth]{combined_iterations_comparison.png}
     \caption{Comparación del número de iteraciones requeridas para la convergencia.}
     \label{fig:iterations}
 \end{figure}
